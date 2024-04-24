@@ -3,14 +3,13 @@
 const super_link = "https://www.strava.com/oauth/token"
 
 //making a fetch request for all activities
-//https://www.strava.com/api/v3/athlete/activities?access_token=277bc08d2d53600fbd22a05598fa1d479e3f7f24
-function getAllActivites() {
-    const activities_link = "https://www.strava.com/api/v3/athlete/activities?access_token=277bc08d2d53600fbd22a05598fa1d479e3f7f24"
+//https://www.strava.com/api/v3/athlete/activities?access_token=
+function getAllActivites(res) {
+    const activities_link = `https://www.strava.com/api/v3/athlete/activities?access_token=${res.access_token}`
     fetch(activities_link)
-        .then((res) => console.log(res.json))
+        .then((res) => console.log(res.json()))
 }
 
-getAllActivites();
 
 //getting new access token
 function reAuthorize(){
@@ -29,7 +28,9 @@ function reAuthorize(){
             grant_type: 'refresh_token',
 
         })
-    }).then((res) => console.log(res.json()))
+    }).then(res => res.json())
+        .then(res => getAllActivites(res))
 }
 
+reAuthorize();
 reAuthorize();
