@@ -1,3 +1,4 @@
+
 //https://www.strava.com/oauth/token?client_id=&client_secret=&refresh_token=305c2ace0e6e1c5830cfee115f47200b837773e3&grant_type=refresh_token
 const super_link = "https://www.strava.com/oauth/token"
 
@@ -27,8 +28,8 @@ function reAuthorize(){
             refresh_token: '305c2ace0e6e1c5830cfee115f47200b837773e3',
             grant_type: 'refresh_token',
 
-        }).then((res) => console.log(res.json()))
-    })
+        })
+    }).then((res) => console.log(res.json()))
 }
 
 reAuthorize();
